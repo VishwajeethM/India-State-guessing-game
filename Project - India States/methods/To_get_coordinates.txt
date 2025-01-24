@@ -1,0 +1,27 @@
+import turtle
+
+# same screen size as main
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+
+# Showing map
+image = "resized_india_map.gif"
+screen.addshape(image)
+turtle.shape(image)
+screen.title("India States Game")
+
+
+x_cord = []
+y_cord = []
+
+
+def get_mouse_click_cord(x, y):
+    x_cord.append(x)
+    y_cord.append(y)
+    print(x_cord)
+    print(y_cord)
+
+# click on the map to get (x,y) coordinates and copy the final printed list.
+
+turtle.onscreenclick(get_mouse_click_cord)
+turtle.mainloop()

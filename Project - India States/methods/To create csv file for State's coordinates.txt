@@ -1,0 +1,35 @@
+import turtle
+import pandas
+
+
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+
+image = "resized_india_map.gif"
+screen.addshape(image)
+turtle.shape(image)
+screen.title("India States Game")
+
+
+# Creating new file in csv type
+
+x_cord = [-72.0, 199.0, 177.0, 47.0, -15.0, -150.0, -200.0, -112.0, -97.0, 37.0, -126.0, -111.0, -87.0, -131.0, 191.0,
+          143.0, 172.0, 204.0, 26.0, -127.0, -162.0, 98.0, -76.0, -68.0, 150.0, -41.0, -57.0, 84.0]
+y_cord = [-128.0, 125.0, 86.0, 75.0, -12.0, -120.0, 21.0, 140.0, 195.0, 30.0, -133.0, -205.0, 29.0, -48.0, 55.0, 66.0,
+          27.0, 78.0, -22.0, 172.0, 96.0, 111.0, -198.0, -64.0, 36.0, 101.0, 160.0, 22.0]
+
+data = pandas.read_csv("list_of_states_in_india.csv")
+
+states = data.State.to_list()
+states.pop()
+states.pop()
+
+
+data_dict = {
+    "state": states,
+    "x": x_cord,
+    "y": y_cord
+}
+
+new_data = pandas.DataFrame(data_dict)
+new_data.to_csv("states_coordinates.csv")

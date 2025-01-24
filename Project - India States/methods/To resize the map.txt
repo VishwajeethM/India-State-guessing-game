@@ -1,0 +1,8 @@
+from PIL import Image
+
+# Open and resize the image
+
+original_image = Image.open("map/india map.gif")
+resized_image = original_image.resize((800, 600))  # Adjust dimensions as needed
+resized_image.save("resized_india_map.gif")
+image = "resized_india_map.gif"

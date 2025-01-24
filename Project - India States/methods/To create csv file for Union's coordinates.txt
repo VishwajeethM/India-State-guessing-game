@@ -1,0 +1,32 @@
+import turtle
+import pandas
+
+
+screen = turtle.Screen()
+screen.setup(width=800, height=600)
+
+image = "resized_india_map.gif"
+screen.addshape(image)
+turtle.shape(image)
+screen.title("India States Game")
+
+# Creating new file in csv type
+
+x_cord = [172.0, -106.0, -197.0, -97.0, -111.0, -84.0, -294.0, -55.0]
+y_cord = [-216.0, 173.0, -24.0, 130.0, 230.0, 237.0, -206.0, -179.0]
+
+
+data = pandas.read_csv("list_of_union_territories_of_india.csv")
+
+union = data["Union territory"].to_list()
+union.pop()
+union.pop()
+
+data_dict = {
+    "union": union,
+    "x": x_cord,
+    "y": y_cord
+}
+
+new_data = pandas.DataFrame(data_dict)
+new_data.to_csv("union_coordinates.csv")
